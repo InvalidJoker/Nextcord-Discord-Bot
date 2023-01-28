@@ -2,6 +2,7 @@ import nextcord
 from nextcord.ext import commands
 from config import TOKEN, PREFIX, ERROR_CHANNEL, OWNER
 import os
+import aiosqlite
 
 bot = commands.Bot(command_prefix=PREFIX, intents=nextcord.Intents.all(), case_insensitive=True, owner_ids=[OWNER])
 
@@ -11,7 +12,8 @@ for i in os.listdir("./cogs"):
 
 @bot.event
 async def on_ready():
-    print(f"📡 | Bot ID: {bot.user.id} | Bot Name: {bot.user.name}\n❤️ | Trete meinem Discord bei: https://discord.gg/x8b26bTCd4")
+    print(f"📡 | Bot ID: {bot.user.id} | Bot Name: {bot.user.name}\n💎 | Trete meinem Discord bei: https://discord.gg/x8b26bTCd4")
+    setattr(bot, "db", await aiosqlite.connect("main.db"))
 
 @bot.command()
 @commands.is_owner()

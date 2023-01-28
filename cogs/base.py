@@ -7,6 +7,14 @@ class Base(commands.Cog):
 
     @commands.command()
     async def ping(self, ctx: commands.Context):
+        if "@everyone" in ctx.message.content:
+            await ctx.reply("Nö find ich ned cool")
+            return
+        
+        elif "@here" in ctx.message.content:
+            await ctx.reply("Nö find ich ned cool")
+            return
+        
         await ctx.send("Pong!")
 
     @nextcord.slash_command()
